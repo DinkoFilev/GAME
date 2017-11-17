@@ -17,13 +17,14 @@ public abstract class Hero {
 	private double criticalRate;
 	private boolean isAlive;
 	private String name;
+	private String heroType;
 	private int health;
 	private Weapon currentWep;
 	private List<Weapon> weapons;
 	// Map with special abilities psyhical skills magic skills
 	// HashMap
 
-	public Hero(String name, int health, int minDMG, int armor, double criticalRate) {
+	public Hero(String name, int health, int minDMG, int armor, double criticalRate, String heroType) {
 		super();
 		this.level = 1;
 		this.experience = 0;
@@ -35,8 +36,13 @@ public abstract class Hero {
 		this.criticalRate = criticalRate;
 		this.isAlive = true;
 		this.weapons = new ArrayList<Weapon>();
+		this.heroType = heroType;
 	}
-
+	
+	public String getHeroType() {
+		return heroType;
+	}
+	
 	public int getMinDMG() {
 		return minDMG;
 	}
@@ -85,6 +91,7 @@ public abstract class Hero {
 		this.health = health;
 		// if health is below or equal to 0 hero should be dead
 		if (this.health <= 0) {
+			this.health = 0;
 			isAlive = false;
 		}
 	}
